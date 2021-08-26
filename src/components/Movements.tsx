@@ -7,21 +7,28 @@ import {
 
 const columns: GridColDef[] = [
   {
+    field: "id",
+    headerName: "nº",
+    flex: 1,
+  },
+  {
     field: "actual",
     headerName: "Money",
-    width: 200,
+    sortable: false,
+    flex: 1,
   },
   {
     field: "income",
-    headerName: "Movements",
-    width: 200,
+    headerName: "Moves",
+    sortable: false,
+    flex: 1,
   },
 ];
 
 export default function Movements(props: any) {
   return (
-    <div style={{ height: 400, width: 400 }}>
-      <DataGrid rows={props.data} columns={columns} pageSize={10} />
+    <div style={{ height: 400, width: "100%" }}>
+      <DataGrid rows={props.data} columns={columns} />
     </div>
   );
 }

@@ -15,25 +15,34 @@ export default function Wallet() {
   return (
     <>
       <Header />
-      <Grid
-        container
-        direction="column"
-        justifyContent="flex-start"
-        alignItems="center"
-      >
-        <Box pt={3}>
-          <Typography variant="h4" gutterBottom>
-            Welcome {finded?.userName}
-          </Typography>
-        </Box>
-        <Box pt={3} pb={3}>
-          <Typography variant="h5" gutterBottom>
-            Your balance: {finded?.wallet}
-          </Typography>
-        </Box>
-        <Balance data={finded?.transcactions} />
-        <Movements data={finded?.transcactions} />
-      </Grid>
+      <Container>
+        <Grid
+          container
+          direction="column"
+          justifyContent="flex-start"
+          alignItems="center"
+        >
+          <Box pt={3}>
+            <Typography variant="h4" gutterBottom>
+              Welcome {finded?.userName}
+            </Typography>
+          </Box>
+          <Box pt={3} pb={3}>
+            <Typography variant="h5" gutterBottom>
+              Your balance: {finded?.wallet}
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid
+          container
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+        >
+          <Balance data={finded?.transcactions} />
+          <Movements data={finded?.transcactions} />
+        </Grid>
+      </Container>
     </>
   );
 }
