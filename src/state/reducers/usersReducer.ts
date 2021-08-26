@@ -15,26 +15,10 @@ const initialState: Users[] = [
     password: "123",
     wallet: 13,
     transcactions: [
-      {
-        actual: 0,
-        income: 0,
-      },
-      {
-        actual: 13,
-        income: 13,
-      },
-      {
-        actual: 16,
-        income: 3,
-      },
-      {
-        actual: 10,
-        income: -6,
-      },
-      {
-        actual: 13,
-        income: 3,
-      },
+      { id: 0, actual: 0, income: 0 },
+      { id: 1, actual: 13, income: +13 },
+      { id: 2, actual: 16, income: +3 },
+      { id: 3, actual: 10, income: -6 },
     ],
   },
 
@@ -44,22 +28,10 @@ const initialState: Users[] = [
     password: "123",
     wallet: 15500,
     transcactions: [
-      {
-        actual: 0,
-        income: 0,
-      },
-      {
-        actual: 2500,
-        income: 2500,
-      },
-      {
-        actual: 5500,
-        income: 3000,
-      },
-      {
-        actual: 15500,
-        income: 10000,
-      },
+      { id: 0, actual: 0, income: 0 },
+      { id: 1, actual: 2500, income: +2500 },
+      { id: 2, actual: 5500, income: +3000 },
+      { id: 3, actual: 15500, income: +10000 },
     ],
   },
 ];
@@ -76,6 +48,7 @@ const userSlice = createSlice({
       const index = state.findIndex((search) => search.id == action.payload.id);
 
       state[index].transcactions = state[index].transcactions.concat({
+        id: state[index].transcactions.length,
         actual: state[index].wallet + action.payload.amount,
         income: +action.payload.amount,
       });
@@ -95,11 +68,13 @@ const userSlice = createSlice({
       );
 
       state[indexTo].transcactions = state[indexTo].transcactions.concat({
+        id: state[indexTo].transcactions.length,
         actual: state[indexTo].wallet + action.payload.amount,
         income: +action.payload.amount,
       });
 
       state[indexFrom].transcactions = state[indexFrom].transcactions.concat({
+        id: state[indexFrom].transcactions.length,
         actual: state[indexFrom].wallet - action.payload.amount,
         income: -action.payload.amount,
       });

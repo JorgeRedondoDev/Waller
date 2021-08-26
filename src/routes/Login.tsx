@@ -11,7 +11,7 @@ import {
   Grid,
   Box,
   Button,
-  Container,
+  Typography,
 } from "@material-ui/core";
 
 const BoxInput = (props: any) => (
@@ -53,6 +53,11 @@ export default function Login() {
         alignItems="center"
         justifyContent="center"
       >
+        <Box pt={3}>
+          <Typography variant="h3" gutterBottom>
+            Login
+          </Typography>
+        </Box>
         <BoxInput type={"username"} setValue={setUsername} />
         <BoxInput type={"password"} setValue={setPassword} />
         <Box pt={3}>

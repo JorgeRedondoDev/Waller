@@ -19,36 +19,34 @@ export default function Home(props: any) {
     history.push("/");
   }
   return (
-    <Container>
-      <AppBar position="relative">
-        <Toolbar>
-          <Box display="flex" flexGrow={1}>
-            <Button variant="contained">
-              <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-                home
-              </Link>
-            </Button>
-          </Box>
+    <AppBar position="relative">
+      <Toolbar>
+        <Box display="flex" flexGrow={1}>
+          <Button variant="contained">
+            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+              home
+            </Link>
+          </Button>
+        </Box>
 
-          {/*  */}
-          {isLogged ? (
-            <>
-              <Button
-                onClick={logout}
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Logout
-              </Button>
-              <ButtonLink link="wallet" />
-            </>
-          ) : (
-            <>
-              <ButtonLink link="register" />
-              <ButtonLink link="login" />
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
-    </Container>
+        {/*  */}
+        {isLogged ? (
+          <>
+            <Button
+              onClick={logout}
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Logout
+            </Button>
+            <ButtonLink link="wallet" />
+          </>
+        ) : (
+          <>
+            <ButtonLink link="register" />
+            <ButtonLink link="login" />
+          </>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 }

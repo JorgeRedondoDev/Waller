@@ -13,7 +13,7 @@ import {
   Grid,
   Box,
   Button,
-  Container,
+  Typography,
 } from "@material-ui/core";
 
 const BoxInput = (props: any) => (
@@ -34,6 +34,8 @@ export default function Register() {
   const users = useSelector((state: State) => state.user);
   const dispatch = useAppDispatch();
   const history = useHistory();
+
+  const [notify, setNotify] = useState("");
 
   const [user, setUser] = useState<Users>({
     id: users.length,
@@ -60,10 +62,10 @@ export default function Register() {
   const handleSubmit = (e: React.FormEvent) => {
     const finded = users.find((o) => o.userName === user.userName);
     if (finded != undefined || user.userName === "") {
-      console.log(finded);
+      setNotify("The user already exists.");
     } else {
       dispatch(addUser(user));
-      history.push("/");
+      history.push("/login");
     }
   };
 
@@ -76,6 +78,12 @@ export default function Register() {
         alignItems="center"
         justifyContent="center"
       >
+        <Box pt={3}>
+          <Typography variant="h3" gutterBottom>
+            Register
+          </Typography>
+        </Box>
+
         <BoxInput type={"userName"} handleChange={handleChange} />
         <BoxInput
           type={"password"}
@@ -86,6 +94,7 @@ export default function Register() {
           <Button variant="contained" color="primary" onClick={handleSubmit}>
             Register
           </Button>
+          <p>{notify}</p>
         </Box>
       </Grid>
     </div>
