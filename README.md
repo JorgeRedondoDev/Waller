@@ -1,4 +1,3 @@
 # Waller
 
-### To initialise it:
-npm run dev
+Waller is a small project to learn how to use TypeScript and React Redux. 
